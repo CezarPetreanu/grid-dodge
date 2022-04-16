@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     {
         if(!gameOver)
         {
+            FindObjectOfType<AudioManager>().Play("snd_PlayerMove");
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
             GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             player.position = new Vector3(Position_amp * Position_row, jump, Position_amp * Position_col);
@@ -88,6 +89,7 @@ public class Player : MonoBehaviour
         {
             if(!gameOver)
             {
+                FindObjectOfType<AudioManager>().Play("snd_PlayerHit");
                 Invoke("player_reset", 3f);
                 gameOver = true;
                 spawn_start = false;
