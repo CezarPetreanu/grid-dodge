@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public GameObject head;
     public GameObject enemy_spawner;
 
-    bool spawn_start;
+    public bool spawn_start;
 
     // Start is called before the first frame update
     void Start()
@@ -63,41 +63,39 @@ public class Player : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Z))
         {
-            if(gameOver)
+            if(!gameOver && !spawn_start)
             {
-                gameOver = false;
-                Position_row = Position_col = 0;
-                body.GetComponent<Renderer>().material = normalMat;
-                head.GetComponent<Renderer>().material = normalMat;
-                player_move();
-            }
-            else
-            {
-                if(!spawn_start)
-                {
-                    spawn_start = true;
-                    enemy_spawner.GetComponent<EnemySpawner>().Invoke("spawn_start", 0);
-                }
+                spawn_start = true;
+                enemy_spawner.GetComponent<EnemySpawner>().Invoke("spawn_start", 0);
+                Score.instance.resetScore();
+                Coin.instance.enabled = true;
             }
         }
     }
-
+    void player_reset()
+    {
+        gameOver = false;
+        Position_row = Position_col = 0;
+        body.GetComponent<Renderer>().material = normalMat;
+        head.GetComponent<Renderer>().material = normalMat;
+        player_move();
+    }
     private void OnCollisionEnter(Collision collision)
     {
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
 
         if (collision.gameObject.tag == "Enemy")
         {
-            gameOver = true;
-            spawn_start = false;
-            body.GetComponent<Renderer>().material = deadMat;
-            head.GetComponent<Renderer>().material = deadMat;
-            enemy_spawner.GetComponent<EnemySpawner>().Invoke("spawn_reset", 0);
-        }
-        else if (collision.gameObject.tag == "Coin")
-        {
-            float pos_row = Random.Range(-1, 1);
-            float pos_col = Random.Range(-1, 1);
+            if(!gameOver)
+            {
+                Invoke("player_reset", 3f);
+                gameOver = true;
+                spawn_start = false;
+                body.GetComponent<Renderer>().material = deadMat;
+                head.GetComponent<Renderer>().material = deadMat;
+                enemy_spawner.GetComponent<EnemySpawner>().Invoke("spawn_reset", 0);
+                Coin.instance.enabled = false;
+            }
         }
     }
 }

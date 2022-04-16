@@ -349,6 +349,7 @@
 "Assets/EnemySpawner.cs"
 "Assets/floatingObject.cs"
 "Assets/Player.cs"
+"Assets/Score.cs"
 "Assets/spinningObject.cs"
 -langversion:9.0
 

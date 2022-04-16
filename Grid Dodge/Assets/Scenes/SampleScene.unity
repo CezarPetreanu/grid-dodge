@@ -822,6 +822,7 @@ MonoBehaviour:
   body: {fileID: 716281992}
   head: {fileID: 2114303192}
   enemy_spawner: {fileID: 1639087045}
+  spawn_start: 0
 --- !u!1 &794289548
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,6 +834,7 @@ GameObject:
   - component: {fileID: 794289549}
   - component: {fileID: 794289551}
   - component: {fileID: 794289550}
+  - component: {fileID: 794289552}
   m_Layer: 0
   m_Name: ScoreText (1)
   m_TagString: Untagged
@@ -847,17 +849,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794289548}
-  m_LocalRotation: {x: 0.27059832, y: 0.6532811, z: -0.27059907, w: 0.6532814}
-  m_LocalPosition: {x: 0, y: 0, z: 1.24}
-  m_LocalScale: {x: 0.22, y: 0.22, z: 0.22}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.007806583}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1646338501}
-  m_RootOrder: 1
+  m_Father: {fileID: 969198049}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.65, y: -1.63}
+  m_AnchoredPosition: {x: 0.0080862045, y: -4.0150523}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &794289550
@@ -916,7 +918,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -945,7 +947,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 3.366641, y: -5.3338504, z: -10.191813, w: 1.5571525}
+  m_margin: {x: 9.58818, y: -5.3338504, z: -10.191813, w: 1.5571525}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -996,6 +998,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &794289552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794289548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 740f4982fab1017489086c503cebf764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoretext: {fileID: 794289550}
+  points: 0
 --- !u!1 &920662573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,7 +1297,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 1.2417784}
   m_LocalScale: {x: 0.22, y: 0.22, z: 0.22}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 794289549}
   m_Father: {fileID: 1646338501}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
@@ -2361,7 +2378,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 1}
   - {x: -1, y: 0, z: 0}
   - {x: 1, y: 0, z: 0}
-  rate_min: 1
+  rate_min: 0.75
   rate_max: 2
   rate: 0
   ratio: 10
@@ -2411,7 +2428,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 969198049}
-  - {fileID: 794289549}
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2655,6 +2671,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
+    - target: {fileID: 7376213600476362161, guid: 8529561628985ef40a7915813d53b978, type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 7376213600476362164, guid: 8529561628985ef40a7915813d53b978, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2703,6 +2723,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7605628106590228563, guid: 8529561628985ef40a7915813d53b978, type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 794289548}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8529561628985ef40a7915813d53b978, type: 3}
 --- !u!1 &2079497211

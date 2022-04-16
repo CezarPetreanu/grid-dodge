@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Coin : MonoBehaviour
 {
     // Start is called before the first frame update
     int row=1, col=1;
     int prevrow=1, prevcol=1;
+
+    static public Coin instance;
+
     void choose_pos()
     {
         do
@@ -26,6 +30,7 @@ public class Coin : MonoBehaviour
 
     void Start()
     {
+        instance = this;
         move_coin();
     }
 
@@ -39,7 +44,11 @@ public class Coin : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            move_coin();
+            if(other.gameObject.GetComponent<Player>().spawn_start)
+            {
+                move_coin();
+                Score.instance.addPoint();
+            }
         }
     }
 }
