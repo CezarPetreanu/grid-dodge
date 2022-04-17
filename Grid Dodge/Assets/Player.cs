@@ -17,11 +17,15 @@ public class Player : MonoBehaviour
 
     public bool spawn_start;
 
+    static public Player instance;
+
     // Start is called before the first frame update
     void Start()
     {
+        FindObjectOfType<AudioManager>().Play("mus_Birds");
         Physics.gravity = new Vector3(0, -20.0F, 0);
         spawn_start = false;
+        instance = this;
     }
 
     void player_move()
@@ -69,7 +73,8 @@ public class Player : MonoBehaviour
                 spawn_start = true;
                 enemy_spawner.GetComponent<EnemySpawner>().Invoke("spawn_start", 0);
                 Score.instance.resetScore();
-                Coin.instance.enabled = true;
+                Coin.instance.move_coin();
+                FindObjectOfType<AudioManager>().Play("snd_Start");
             }
         }
     }
@@ -96,7 +101,7 @@ public class Player : MonoBehaviour
                 body.GetComponent<Renderer>().material = deadMat;
                 head.GetComponent<Renderer>().material = deadMat;
                 enemy_spawner.GetComponent<EnemySpawner>().Invoke("spawn_reset", 0);
-                Coin.instance.enabled = false;
+                Coin.instance.HideCoin();
             }
         }
     }

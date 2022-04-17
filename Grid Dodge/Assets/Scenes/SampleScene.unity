@@ -229,16 +229,31 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 2493952b9f88c9b44a9dc85f89dda254, type: 3}
     volume: 0.5
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: snd_Coin
     clip: {fileID: 8300000, guid: 5bedcbf037226c14cbce44606ab1a444, type: 3}
     volume: 0.5
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: snd_PlayerHit
     clip: {fileID: 8300000, guid: d354d093b79dc114592796f020d9d906, type: 3}
     volume: 0.5
     pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: snd_Start
+    clip: {fileID: 8300000, guid: 9d343375292a20f44a5fd22ca6e087d2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: mus_Birds
+    clip: {fileID: 8300000, guid: 77f3c28e921da934a977c585b8d9937b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
     source: {fileID: 0}
 --- !u!1 &149296950
 GameObject:
@@ -2484,6 +2499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d36a4b22198e94e8b86acbf89ed3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalY: 0
   speed: 0.3
   amp: 0.08
 --- !u!1 &1639087045
@@ -2517,18 +2533,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 1792773932707295566, guid: e2f945f7dea3c214385721a6a39f8a50, type: 3}
   positions:
-  - {x: 2, y: 2, z: 7}
-  - {x: 0, y: 2, z: 7}
-  - {x: -2, y: 2, z: 7}
-  - {x: 2, y: 2, z: -7}
-  - {x: 0, y: 2, z: -7}
-  - {x: -2, y: 2, z: -7}
-  - {x: 7, y: 2, z: 2}
-  - {x: 7, y: 2, z: 0}
-  - {x: 7, y: 2, z: -2}
-  - {x: -7, y: 2, z: 2}
-  - {x: -7, y: 2, z: 0}
-  - {x: -7, y: 2, z: -2}
+  - {x: 2, y: 2.5, z: 7}
+  - {x: 0, y: 2.5, z: 7}
+  - {x: -2, y: 2.5, z: 7}
+  - {x: 2, y: 2.5, z: -7}
+  - {x: 0, y: 2.5, z: -7}
+  - {x: -2, y: 2.5, z: -7}
+  - {x: 7, y: 2.5, z: 2}
+  - {x: 7, y: 2.5, z: 0}
+  - {x: 7, y: 2.5, z: -2}
+  - {x: -7, y: 2.5, z: 2}
+  - {x: -7, y: 2.5, z: 0}
+  - {x: -7, y: 2.5, z: -2}
   velocities:
   - {x: 0, y: 0, z: -1}
   - {x: 0, y: 0, z: 1}
@@ -2828,6 +2844,10 @@ PrefabInstance:
       value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 7376213600476362161, guid: 8529561628985ef40a7915813d53b978, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376213600476362161, guid: 8529561628985ef40a7915813d53b978, type: 3}
       propertyPath: m_TagString
       value: Coin
       objectReference: {fileID: 0}
@@ -2841,7 +2861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7376213600476362164, guid: 8529561628985ef40a7915813d53b978, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.65
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7376213600476362164, guid: 8529561628985ef40a7915813d53b978, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2874,6 +2894,30 @@ PrefabInstance:
     - target: {fileID: 7376213600476362164, guid: 8529561628985ef40a7915813d53b978, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376213600476362165, guid: 8529561628985ef40a7915813d53b978, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 7376213600476362167, guid: 8529561628985ef40a7915813d53b978, type: 3}
+      propertyPath: m_Height
+      value: 7.485735
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376213600476362167, guid: 8529561628985ef40a7915813d53b978, type: 3}
+      propertyPath: m_Radius
+      value: 0.4117155
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376213600476362167, guid: 8529561628985ef40a7915813d53b978, type: 3}
+      propertyPath: m_Center.x
+      value: 0.00000004640596
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376213600476362167, guid: 8529561628985ef40a7915813d53b978, type: 3}
+      propertyPath: m_Center.y
+      value: 0.09694645
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376213600476362167, guid: 8529561628985ef40a7915813d53b978, type: 3}
+      propertyPath: m_Center.z
+      value: 0.08828464
       objectReference: {fileID: 0}
     - target: {fileID: 7376213600476362167, guid: 8529561628985ef40a7915813d53b978, type: 3}
       propertyPath: m_IsTrigger

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class floatingObject : MonoBehaviour
 {
-    float originalY;
+    public float originalY;
     float ang;
     float s;
 
